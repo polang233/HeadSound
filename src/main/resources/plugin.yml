@@ -1,0 +1,6 @@
+name: HeadSound
+version: '1.0.0'
+main: cc.sbsj.polang.headSound.HeadSound
+api-version: '1.18'
+authors: [ polang_ ]
+website: www.sbsj.cc
