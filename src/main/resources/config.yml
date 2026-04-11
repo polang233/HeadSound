@@ -1,0 +1,18 @@
+#自定义头颅
+custom:
+  "test":
+    #可以设置不同的值
+    value:
+      - "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTdlYTI3OGQ2MjI1YzQ0N2M1OTQzZDY1Mjc5OGQwYmJiZDE0MTg0MzRjZThjNTRjNTRmZGFjNzk5OTRkZGQ2YyJ9fX0="
+      - "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzlkZjg3MDc3OGIyMDYxNGMxYzJiMDUzMTRmNDliZTMxZTA1NGUwNjg3ZjQ2NWU5ZjE4NDJmZTA0YWI3NjM0NCJ9fX0="
+    #触发的音效
+    sound:
+      # https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html
+      # 音效名称-音量-音调
+      - "ENTITY_ZOMBIE_AMBIENT-1-1"
+#玩家头颅
+player:
+  #玩家id
+  Polang_:
+    sound:
+      - "ENTITY_SKELETON_AMBIENT-1-2"

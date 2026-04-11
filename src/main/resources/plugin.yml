@@ -1,6 +1,17 @@
 name: HeadSound
-version: '1.0.0'
+version: '1.1.0'
 main: cc.sbsj.polang.headSound.HeadSound
 api-version: '1.18'
 authors: [ polang_ ]
-website: www.sbsj.cc
+website: https://github.com/polang233/HeadSound
+
+commands:
+  headSound:
+    description: HeadSound 主命令
+    aliases: [hs]
+    permission: headsound.admin
+
+permissions:
+  headsound.admin:
+    description: 允许使用 HeadSound 命令
+    default: op
