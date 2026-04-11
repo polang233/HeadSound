@@ -14,14 +14,16 @@
 
 通过红石信号激活/手动激活音符盒，即可播放你设置的头颅音效
 
+
 它极大的拓展了玩家们的红石音乐内容，适合生存/娱乐/社交/创作服务器使用
 
+<img width="791" height="114" alt="组1 2" src="https://github.com/user-attachments/assets/27a8cf01-310d-4391-8e12-f7cbd4b63cc5" />
 
 
 
-✅目前仅测试了 1.18.2 版本，其他版本可以自行测试
+   ✅目前仅测试了 1.18.2 版本，其他版本可以自行测试
 
-✅理论支持1.13-1.21.11
+   ✅理论支持1.13-1.21.11
 
 
 <img width="791" height="114" alt="1组 2" src="https://github.com/user-attachments/assets/863b87b5-4685-4699-bb97-ede9a25f5ce1" />
