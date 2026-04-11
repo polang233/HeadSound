@@ -1,3 +1,4 @@
+<img width="1058" height="571" alt="image" src="https://github.com/user-attachments/assets/f62dfeb9-6d07-4749-bdbc-6d86e703fd6b" />
 一个编辑音符盒头颅音效的插件
 
 【前言】
