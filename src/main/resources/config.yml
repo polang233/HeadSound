@@ -9,6 +9,7 @@ custom:
     sound:
       # https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html
       # 音效名称-音量-音调
+      # 如果需要组合音效，可以在列表中加入 delay@tick，例如 delay@20 表示延迟20tick再播放后面的音效
       - "ENTITY_ZOMBIE_AMBIENT-1-1"
 #玩家头颅
 player:

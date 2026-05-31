@@ -1,6 +1,7 @@
 package cc.sbsj.polang.headSound.util;
 
 import cc.sbsj.polang.headSound.HeadSound;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.World;
@@ -19,15 +20,77 @@ public class SoundPlay {
         this.debugMode = debugMode;
     }
 
-    //随机选一个
+    //随机选一个；如果列表里有 delay@tick，则按顺序组合播放
     public void playSound(World world, Location loc, List<String> sounds) {
         if (sounds == null || sounds.isEmpty()) {
             return;
         }
 
+        if (hasDelayAction(sounds)) {
+            playSoundSequence(world, loc, sounds);
+            return;
+        }
+
         // 随机选一个音效
         String soundStr = sounds.get((int) (Math.random() * sounds.size()));
-        
+        playSingleSound(world, loc, soundStr);
+    }
+
+    private boolean hasDelayAction(List<String> sounds) {
+        for (String soundStr : sounds) {
+            if (isDelayAction(soundStr)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void playSoundSequence(World world, Location loc, List<String> sounds) {
+        long delayTicks = 0L;
+        Location playLoc = loc.clone();
+
+        if (debugMode) {
+            HeadSound.instance.getLogger().info("[调试] 准备顺序播放组合音效，共 " + sounds.size() + " 项");
+        }
+
+        for (String soundStr : sounds) {
+            if (isDelayAction(soundStr)) {
+                delayTicks += parseDelayTicks(soundStr);
+                continue;
+            }
+
+            long currentDelay = delayTicks;
+            if (currentDelay <= 0L) {
+                playSingleSound(world, playLoc, soundStr);
+                continue;
+            }
+
+            Bukkit.getScheduler().runTaskLater(HeadSound.instance, () -> playSingleSound(world, playLoc, soundStr), currentDelay);
+        }
+    }
+
+    private boolean isDelayAction(String soundStr) {
+        return soundStr != null && soundStr.trim().toLowerCase().startsWith("delay@");
+    }
+
+    private long parseDelayTicks(String soundStr) {
+        try {
+            long ticks = Long.parseLong(soundStr.trim().substring("delay@".length()));
+            if (ticks < 0L) {
+                HeadSound.instance.getLogger().warning("延迟配置不能小于0: " + soundStr);
+                return 0L;
+            }
+            return ticks;
+        } catch (Exception e) {
+            HeadSound.instance.getLogger().warning("延迟配置不对: " + soundStr);
+            if (debugMode) {
+                e.printStackTrace();
+            }
+            return 0L;
+        }
+    }
+
+    private void playSingleSound(World world, Location loc, String soundStr) {
         if (debugMode) {
             HeadSound.instance.getLogger().info("[调试] 准备播放音效: " + soundStr);
         }
